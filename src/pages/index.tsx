@@ -1,70 +1,8 @@
-import { css } from '@emotion/react';
 import type { HeadFC, PageProps } from 'gatsby';
 import * as React from 'react';
 
-const pageStyles = css`
-  padding: 32px;
-  color: #333;
-`;
-
-const headingStyles = css`
-  font-size: 2em;
-  color: #333;
-`;
-
-const headingAccentStyles = css`
-  color: #663399;
-`;
-
-const paragraphStyles = css`
-  margin-bottom: 48px;
-  font-size: 1.25em;
-  line-height: 1.6;
-`;
-
-const doclistStyles = css`
-  margin-left: 0;
-  list-style-type: none;
-`;
-
-const docLinkStyle = css`
-  text-decoration: none;
-  color: #663399;
-`;
-
-const linkStyle = css`
-  text-decoration: none;
-  color: #663399;
-`;
-
-const listItemStyles = css`
-  margin-bottom: 16px;
-`;
-
-const codeStyles = css`
-  font-family: 'Courier New', Courier, monospace;
-  background-color: #f4f4f4;
-  padding: 4px;
-`;
-
-const badgeStyle = css`
-  background-color: #663399;
-  color: #fff;
-  padding: 4px 6px;
-  border-radius: 4px;
-  font-size: 0.75em;
-  font-weight: bold;
-  margin-left: 8px;
-`;
-
-const descriptionStyle = css`
-  color: #999;
-`;
-
-const listStyles = css`
-  margin-left: 0;
-  list-style-type: none;
-`;
+import { styles } from './index.styles';
+import { ClimbingBackground } from 'assets/ClimbingBackground.svg';
 
 const docLinks = [
   {
@@ -127,21 +65,22 @@ const links = [
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <main css={pageStyles}>
-      <h1 css={headingStyles}>
+    <main css={styles.pageStyles}>
+      <ClimbingBackground />
+      <h1 css={styles.headingStyles}>
         Congratulations
         <br />
-        <span css={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
+        <span css={styles.headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
       </h1>
-      <p css={paragraphStyles}>
-        Edit <code css={codeStyles}>src/pages/index.tsx</code> to see this page update in real-time.
-        😎
+      <p css={styles.paragraphStyles}>
+        Edit <code css={styles.codeStyles}>src/pages/index.tsx</code> to see this page update in
+        real-time. 😎
       </p>
-      <ul css={doclistStyles}>
+      <ul css={styles.doclistStyles}>
         {docLinks.map((doc) => (
-          <li key={doc.url} css={docLinkStyle}>
+          <li key={doc.url} css={styles.docLinkStyle}>
             <a
-              css={linkStyle}
+              css={styles.linkStyle}
               href={`${doc.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
             >
               {doc.text}
@@ -149,22 +88,22 @@ const IndexPage: React.FC<PageProps> = () => {
           </li>
         ))}
       </ul>
-      <ul css={listStyles}>
+      <ul css={styles.listStyles}>
         {links.map((link) => (
-          <li key={link.url} css={{ ...listItemStyles, color: link.color }}>
+          <li key={link.url} css={{ ...styles.listItemStyles, color: link.color }}>
             <span>
               <a
-                css={linkStyle}
+                css={styles.linkStyle}
                 href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter-ts`}
               >
                 {link.text}
               </a>
               {link.badge && (
-                <span css={badgeStyle} aria-label="New Badge">
+                <span css={styles.badgeStyle} aria-label="New Badge">
                   NEW!
                 </span>
               )}
-              <p css={descriptionStyle}>{link.description}</p>
+              <p css={styles.descriptionStyle}>{link.description}</p>
             </span>
           </li>
         ))}
