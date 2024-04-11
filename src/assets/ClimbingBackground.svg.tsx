@@ -1,19 +1,43 @@
-import React from 'react';
+import { css } from '@emotion/react';
+import React, { useEffect, useState } from 'react';
 
-export const ClimbingBackground = (props: {
-  width?: string | number;
-  height?: string | number;
-}) => {
-  const { width = '100%', height = '100%' } = props;
+const BREAK_POINTS: { [key: string]: string } = ['sm', 'md', 'lg', 'xl'].reduce(
+  (acc: { [key: string]: string }, cur: string, i: number) => {
+    acc[cur] = `@media (min-width: ${576 + 192 * i}px)`;
+    return acc;
+  },
+  {}
+); // sm: 576px, md: 768px, lg: 960px, xl: 1152px
+
+const IMG_W = 696;
+
+export const ClimbingBackground = () => {
+  const [x, setWindowWidth] = useState(window.innerWidth);
+  const { width: w, height: h } = screen;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <svg
-      width={width}
-      height={height}
+      css={css`
+        height: 100vh;
+        transform: translate(0px, 0px) scale(1);
+        @media (min-width: ${IMG_W}px) {
+          transform: translate(${((x - IMG_W) * 2) / 5}px, ${-(x - IMG_W) / 2 - 50}px)
+            scale(${1 + ((1 / (w - IMG_W)) * x) / 2});
+          margin-bottom: ${0.2 * x}px;
+        }
+      `}
       viewBox="0 0 1448 1793"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      fill="#DEDFDF"
     >
-      <rect width={width} height={height} fill="#DEDFDF" />
+      <rect width={w} height={2 * h} fill="#DEDFDF" />
       <path
         d="M1014.49 1224.49C1014.49 1224.49 1014.49 1130.47 990.549 1109.87C966.609 1089.28 967.657 1116.6 967.657 1116.6L987.004 1252.91C987.004 1252.91 1019.65 1257.88 1014.49 1224.49Z"
         fill="#1B1F21"
