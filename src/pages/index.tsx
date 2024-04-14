@@ -67,7 +67,20 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
       <ClimbingBackground />
-      <main css={styles.pageStyles}>
+      <section id="First View" css={[styles.hoge, styles.firstViewStyles]}>
+        <div css={styles.iamContainerStyles}>
+          <div css={styles.iamBackgroundColor}>
+            <p css={styles.iam}>I'm</p>
+          </div>
+          <div css={styles.iamWhite}>
+            <p>
+              <span css={styles.myName}>Shunya Asano</span>, skilled in
+            </p>
+            <p>Cross-platform App Development</p>
+          </div>
+        </div>
+      </section>
+      <main css={[styles.hoge, styles.pageStyles]}>
         <h1 css={styles.headingStyles}>
           Congratulations
           <br />

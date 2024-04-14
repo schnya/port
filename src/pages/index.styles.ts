@@ -1,6 +1,44 @@
 import { css } from '@emotion/react';
 
+import { theme } from 'utils/theme';
+
 export const styles = {
+  firstViewStyles: css``,
+  hoge: css`
+    max-width: 768px;
+    margin: 0 auto;
+  `,
+  iamContainerStyles: css`
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 143px;
+    gap: 26px;
+  `,
+  iamBackgroundColor: css`
+    display: inline-block;
+    width: fit-content;
+    padding-left: 39px;
+    padding-right: 13px;
+    background-color: ${theme.color.white};
+    border-radius: 0 8px 8px 0;
+  `,
+  iam: css`
+    font-size: 3em;
+    color: ${theme.color.black};
+  `,
+  iamWhite: css`
+    padding-left: 39px;
+    font-size: 2em;
+    color: ${theme.color.white};
+    gap: 13px;
+    @media (min-width: 1290px) {
+      width: 90%;
+    }
+  `,
+  myName: css`
+    font-size: 40px;
+  `,
   pageStyles: css`
     padding: 32px;
     color: #333;
